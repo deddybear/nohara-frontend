@@ -1,0 +1,9 @@
+.header-bg {
+    background: rgb(255,57,57) !important;
+    background: linear-gradient(90deg, rgba(255,57,57,1) 0%, rgba(0,0,0,1) 68%) !important;
+}
+
+.header-text {
+    font-weight: 400;
+    font-size: 1em !important;
+}
