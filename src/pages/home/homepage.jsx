@@ -17,8 +17,12 @@ class HomePage extends React.Component {
         return(
             <div>
                 <HeaderComponent/>
-                <CarouselComponent listData={this.state.dummyPhotos}/>
-                <LayananComponent></LayananComponent>
+                <div className='w-75 h-50 mx-auto my-3'>
+                    <CarouselComponent listData={this.state.dummyPhotos}/>
+                </div>
+                <div className='w-75 h-10 mx-auto my-3'>
+                    <LayananComponent text="Layanan Jasa Kami"/>
+                </div>
             </div>
         )
     }
