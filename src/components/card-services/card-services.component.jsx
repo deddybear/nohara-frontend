@@ -2,15 +2,15 @@ import React from 'react'
 import { Card, Carousel } from 'react-bootstrap'
 import './card-services.component.styles.css';
 
-const CardService = ({data}) => (
-    <Card className='col-4 border-0'>
-        <div className='header-bg header-text mb-3 text-white text-center p-2'>{data.name}</div>
+const CardService = ({data, index}) => (
+    <Card className='col-12 col-md-4 border-0'>
+        <div className='header-bg header-text my-3 text-white text-center p-2' key={`name_service_${index}`}>{data.name}</div>
         <Card.Body className='p-0'>
             <Carousel>
                 {
                     data.photos.map((item, index) => 
                         <Carousel.Item key={index}>
-                            <img src={item.path} alt={`service_${index}`}></img>
+                            <img className='col-12' src={item.path} alt={`img_service_${index}`}></img>
                         </Carousel.Item>)
                 }
             </Carousel>

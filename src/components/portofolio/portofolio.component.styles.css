@@ -1,0 +1,28 @@
+.background-component {
+    /* background: #131313; */
+ 
+    /* background:  rgb(255,57,57) !important;
+    background: linear-gradient(180deg, rgba(255,57,57,1) 0%, rgba(0,0,0,1) 68%) !important; */
+
+    /* background: rgb(238,238,238);
+    background: linear-gradient(180deg, rgba(238,238,238,1) 0%, rgba(187,14,14,1) 68%); */
+}
+
+.bg-img {
+    background-image: url('../../assets/TEST11-scaled.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.text-portofolio {
+    font-weight: 400;
+    letter-spacing: 0.1em;
+}
+
+.fs-5 {
+    font-size: 2rem !important;
+}
+
+.fs-6 {
+    font-size: 2.5rem !important;
+}

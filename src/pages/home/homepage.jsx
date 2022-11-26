@@ -3,8 +3,10 @@ import HeaderComponent from '../../components/header/header.component'
 import CarouselComponent from '../../components/carousel/carousel.component'
 import LayananComponent from '../../components/layanan/layanan.components'
 import CardService from '../../components/card-services/card-services.component'
+import PortofolioComponent from '../../components/portofolio/portofolio.component'
 import photos from '../../data/photos.dummy'
 import service from '../../data/service.dummy'
+import portofolio from '../../data/portofolio.dummy'
 import { Row } from 'react-bootstrap'
 
 class HomePage extends React.Component {
@@ -13,7 +15,8 @@ class HomePage extends React.Component {
 
         this.state = {
             dataCaraousel : photos,
-            dataCardService : service
+            dataCardService : service,
+            dataPortofolio : portofolio
         }
     }
 
@@ -28,10 +31,14 @@ class HomePage extends React.Component {
                     <LayananComponent text="Lorem Ipsum Dolor"/>
                     <Row>
                         {
-                            this.state.dataCardService.map((item, index) => <CardService data={item} />)
+                            this.state.dataCardService.map(
+                                (item, index) => 
+                                <CardService data={item} index={index} key={`service_${index}`}/>
+                            )
                         }
                     </Row>
                 </div>
+                <PortofolioComponent dataList={this.state.dataPortofolio}/>
             </div>
         )
     }

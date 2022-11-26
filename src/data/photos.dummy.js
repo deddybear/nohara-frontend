@@ -1,16 +1,14 @@
-import one from '../assets/TEST11-scaled.jpg'
-import two from '../assets/TEST12-scaled.jpg'
-import three from '../assets/TEST13-scaled.jpg'
+import one from '../assets/TEST11-46d2cb3c95f86fee9a86.jpg'
 
 const photos = [
     {
         source: one
     },
     {
-        source: two
+        source: one
     },
     {
-        source: three
+        source: one
     }
 ]
 

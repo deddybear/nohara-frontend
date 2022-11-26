@@ -1,17 +1,17 @@
-import photos from './photos.dummy';
+const path = 'https://via.placeholder.com/460';
 
 const Service = [
     {
         name: 'Jasa Bangunan Rumah',
         photos : [
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             },
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             },
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             }
         ]
     },
@@ -19,13 +19,13 @@ const Service = [
         name: 'Jasa Renovasi Rumah',
         photos : [
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             },
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             },
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             }
         ]
         
@@ -34,13 +34,13 @@ const Service = [
         name: 'Jasa Kontraktor Rumah',
         photos : [
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             },
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             },
             {
-                path: 'https://via.placeholder.com/320'
+                path: path
             }
         ]
         

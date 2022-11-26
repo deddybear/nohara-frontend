@@ -6,4 +6,5 @@
 .header-text {
     font-weight: 400;
     font-size: 1em !important;
+    letter-spacing: 0.1em;
 }
