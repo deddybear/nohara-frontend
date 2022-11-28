@@ -26,7 +26,7 @@ const PortofolioComponent = ({dataList}) => (
                         (item, index) => 
                         <div key={`portofolio_data_${index}`}>
                             <Row>
-                                <Col xs={12} md={6} >
+                                <Col xs={12} md={6} className="align-middle my-auto">
                                     <h1>{item.name}</h1>
                                     <p>{item.desc}</p>
                                 </Col>
