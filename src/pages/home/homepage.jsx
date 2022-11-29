@@ -9,6 +9,8 @@ import service from '../../data/service.dummy'
 import portofolio from '../../data/portofolio.dummy'
 import { Row } from 'react-bootstrap'
 import AboutComponent from '../../components/about-us/about-us.component'
+import AboutData from '../../data/about.dummy'
+import ContactData from '../../data/contact.dummy'
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -17,7 +19,9 @@ class HomePage extends React.Component {
         this.state = {
             dataCaraousel : photos,
             dataCardService : service,
-            dataPortofolio : portofolio
+            dataPortofolio : portofolio,
+            dataCompany: AboutData,
+            dataContact : ContactData
         }
     }
 
@@ -40,8 +44,8 @@ class HomePage extends React.Component {
                     </Row>
                 </div>
                 <PortofolioComponent dataList={this.state.dataPortofolio}/>
-                <div className='w-75 mx-auto my-3'>
-                    <AboutComponent/>
+                <div className='w-75 mx-auto'>
+                    <AboutComponent aboutCompany={this.state.dataCompany} aboutContact={this.state.dataContact}/>
                 </div>
             </div>
         )

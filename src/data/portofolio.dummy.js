@@ -1,4 +1,4 @@
-const path = 'https://via.placeholder.com/460';
+const path = 'https://via.placeholder.com/1427x460';
 
 const Portofolio = [
     {

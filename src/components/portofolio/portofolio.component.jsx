@@ -1,5 +1,4 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap';
 import Slider from 'react-slick';
 import './portofolio.component.styles.css';
 
@@ -25,19 +24,14 @@ const PortofolioComponent = ({dataList}) => (
                     dataList.map(
                         (item, index) => 
                         <div key={`portofolio_data_${index}`}>
-                            <Row>
-                                <Col xs={12} md={6} className="align-middle my-auto">
-                                    <h1>{item.name}</h1>
-                                    <p>{item.desc}</p>
-                                </Col>
-                                <Col xs={12} md={6} >
-                                    <img src={item.photos} alt={`portofolio_${index}`}></img>
-                                </Col>
-                            </Row>
+                            <img className='' src={item.photos} alt={`portofolio_${index}`}></img>
                         </div>
                     )
                 }
             </Slider>
+        </div>
+        <div>
+            <a className='btn btn-light' href='https://gallery.nohara.my.id/'>Gallery ?</a>
         </div>
     </div>
 )

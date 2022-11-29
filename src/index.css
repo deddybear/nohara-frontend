@@ -9,3 +9,26 @@ body {
     background: #131313;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
+.letter-spacing-1 {
+    letter-spacing: .10rem !important;
+}
+
+.letter-spacing-2 {
+    letter-spacing: .5rem !important;
+}
+
+.letter-spacing-3 {
+    letter-spacing: 1rem !important;
+}
+
+.letter-spacing-4 {
+    letter-spacing: 1.5rem !important;
+}
+
+.letter-spacing-5 {
+    letter-spacing: 3rem !important;
+}
