@@ -34,10 +34,10 @@ const AboutComponent = ({aboutCompany, aboutContact}) => (
         <Col xs={12} md={4} className='my-5'>
             <p className='letter-spacing-1'><b>Social Media</b></p>
             <div className='my-3'>
-                <a className='text-dark' href='#'>
+                <a className='text-dark' href='https://web.facebook.com/people/Jasa-Desain-Rumah/100088195363945/'>
                     <Row>
                         <Col xs={1}><AiFillFacebook/></Col>
-                        <Col xs={11}>Ongoing</Col>
+                        <Col xs={11}>Jasa Desain Rumah</Col>
                     </Row>
                 </a>
             </div>

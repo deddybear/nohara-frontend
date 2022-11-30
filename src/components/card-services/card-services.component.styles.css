@@ -1,6 +1,5 @@
 .header-bg {
-    background: rgb(255,57,57) !important;
-    background: linear-gradient(90deg, rgba(255,57,57,1) 0%, rgba(0,0,0,1) 68%) !important;
+    background-color: #be0000;
 }
 
 .header-text {

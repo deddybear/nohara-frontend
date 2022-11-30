@@ -2,6 +2,10 @@ import React from 'react'
 import Slider from 'react-slick';
 import './portofolio.component.styles.css';
 
+const handleClickLink = (linkUrl) => {
+    return window.open(linkUrl, '_blank')
+}
+
 const settings = {
     dots: true,
     fade: true,
@@ -24,14 +28,18 @@ const PortofolioComponent = ({dataList}) => (
                     dataList.map(
                         (item, index) => 
                         <div key={`portofolio_data_${index}`}>
-                            <img className='' src={item.photos} alt={`portofolio_${index}`}></img>
+                            <img className='w-100' src={item.photos} alt={`portofolio_${index}`}></img>
                         </div>
                     )
                 }
             </Slider>
         </div>
+        <div className='col-11 col-md-9 mx-auto bg-link-gallery rounded-3' 
+                onClick={() => handleClickLink('https://gallery.nohara.my.id/')}>
+            <p className='text-dark text-link m-0 fs-6'>Lorem Ipsum</p>
+        </div>
         <div>
-            <a className='btn btn-light' href='https://gallery.nohara.my.id/'>Gallery ?</a>
+
         </div>
     </div>
 )

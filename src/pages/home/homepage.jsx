@@ -12,6 +12,7 @@ import AboutComponent from '../../components/about-us/about-us.component'
 import AboutData from '../../data/about.dummy'
 import ContactData from '../../data/contact.dummy'
 
+
 class HomePage extends React.Component {
     constructor(props) {
         super(props)
@@ -27,7 +28,7 @@ class HomePage extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className='justify-content-md-center section-of-content'>
                 <HeaderComponent/>
                 <div className='w-75 h-50 mx-auto my-3'>
                     <CarouselComponent listData={this.state.dataCaraousel}/>
