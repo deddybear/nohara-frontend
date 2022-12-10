@@ -38,9 +38,6 @@ const PortofolioComponent = ({dataList}) => (
                 onClick={() => handleClickLink('https://gallery.nohara.my.id/')}>
             <p className='text-dark text-link m-0 fs-6'>Lorem Ipsum</p>
         </div>
-        <div>
-
-        </div>
     </div>
 )
 
