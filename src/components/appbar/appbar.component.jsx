@@ -1,13 +1,11 @@
-import { Navigate, useOutlet } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { useOutlet } from "react-router";
 import { Box, CssBaseline } from "@mui/material";
-
+import { NavBar } from "../navbar/navbar.component";
+import { SideBar } from "../sidebar/sidebar.component";
 import { connect } from "react-redux";
-import { NavBar } from "../components/navbar/navbar.component";
-import { SideBar } from "../components/sidebar/sidebar.component";
 
+// https://codesandbox.io/s/react-router-v6-auth-demo-updated-t28l48?file=/src/components/HomeLayout.jsx:470-478
 
-//TODO : Auth and layout sidebar
 const mapStateToProps = (state) => {
   return {
     open: state.open,
@@ -22,25 +20,21 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(() => {
-  const { user } = useAuth();
+function AppBarComponent() {
   const outlet = useOutlet();
-
-  if (!user) {
-    console.log(user);
-    return <Navigate to="/" />;
-  }
 
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
         <NavBar />
         <SideBar />
-        <CssBaseline />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           {outlet}
         </Box>
       </Box>
     </div>
   );
-});
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppBarComponent)
