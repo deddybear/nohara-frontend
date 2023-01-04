@@ -7,10 +7,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar } from './navbar.styles';
 import { useDispatch, useSelector } from 'react-redux';
 
+//TODO : component dibuat untuk dashboard
 export const NavBar = (props) => {
     const open = useSelector((state) => state.open)
     const theme = useTheme()
     const drawerWidth = useSelector((state) => state.drawerWidth)
+    const menuText = useSelector((state) => state.menuText);
     const dispatch = useDispatch()
 
     const handleClick = () => {
@@ -33,7 +35,7 @@ export const NavBar = (props) => {
                   <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" noWrap component="div">
-                  Mini variant drawer
+                  {menuText}
                 </Typography>
             </Toolbar>
       </AppBar>

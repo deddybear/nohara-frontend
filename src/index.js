@@ -6,30 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import WebRoutes from './routes/web';
 import {createStore}  from 'redux';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit'
-
-const globalState = {
-    open : false,
-    // theme : useTheme(),
-    drawerWidth : 240
-}
-
-const rootReducer = (state = globalState, action ) => {
-    if(action.type === 'OPEN_SIDEBAR') {
-        return {
-            ...state,
-            open: true
-        }
-    }
-
-    if (action.type === 'CLOSE_SIDEBAR') {
-        return {
-            ...state,
-            open: false
-        }
-    }
-    return state;
-}
+import { rootReducer } from './redux/rootReducer';
 
 const store = createStore(rootReducer);
 

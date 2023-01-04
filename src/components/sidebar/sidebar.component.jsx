@@ -1,22 +1,27 @@
 import { useTheme } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import Divider from "@mui/material/Divider";
+import {
+  IconButton,
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import LogoutIcon from "@mui/icons-material/Logout";
-import List from "@mui/material/List";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../../hooks/useAuth";
 import { Drawer, DrawerHeader } from "./sidebar.styles";
-import SidebarData from "../../data/sidebar.dummy";
+import { SidebarData as ListMenu } from "../../data/sidebar.dummy";
 import { useNavigate } from "react-router-dom";
+
+//TODO : component dibuat untuk dashboard
 
 export const SideBar = (props) => {
   const theme = useTheme();
@@ -26,15 +31,20 @@ export const SideBar = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleMenu = () => {
     dispatch({ type: "CLOSE_SIDEBAR" });
+  };
+
+  const handleChooseMenu = (link, ChooseMenu) => {
+    navigate(link);
+    dispatch({ type: ChooseMenu });
   };
 
   return (
     <Drawer variant="permanent" open={open} drawerwidth={drawerWidth}>
       <DrawerHeader>
-        Dashboard
-        <IconButton onClick={handleClick}>
+        Menu Dashboard
+        <IconButton onClick={handleMenu}>
           {theme.direction === "rtl" ? (
             <ChevronRightIcon />
           ) : (
@@ -44,11 +54,11 @@ export const SideBar = (props) => {
       </DrawerHeader>
       <Divider />
       <List>
-        {SidebarData.map((text, index) => (
-          <ListItem key={text.name} disablePadding sx={{ display: "block" }}>
+        {ListMenu.map((menu, index) => (
+          <ListItem key={menu.name} disablePadding sx={{ display: "block" }}>
             <ListItemButton
-              onClick={() => navigate(text.link)}
-              key={text.name}
+              onClick={() => handleChooseMenu(menu.link, menu.action)}
+              key={menu.name}
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
@@ -62,10 +72,10 @@ export const SideBar = (props) => {
                   justifyContent: "center",
                 }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {menu.icon}
               </ListItemIcon>
               <ListItemText
-                primary={text.name}
+                primary={menu.name}
                 sx={{ opacity: open ? 1 : 0 }}
               />
             </ListItemButton>
