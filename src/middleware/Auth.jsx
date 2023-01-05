@@ -1,12 +1,11 @@
 import { Navigate, useOutlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { Box, CssBaseline } from "@mui/material";
+import { Box } from "@mui/material";
 
 import { connect } from "react-redux";
-import { NavBar } from "../components/navbar/navbar.component";
-import { SideBar } from "../components/sidebar/sidebar.component";
 import NextBreadcrumbs from "../components/breadcrumbs/breadcrumbs.component";
 import { DrawerHeader } from "../components/sidebar/sidebar.styles";
+import { DrawerDashboard } from "../components/dashboard/drawer.component";
 
 //TODO : Auth and layout sidebar
 const mapStateToProps = (state) => {
@@ -39,9 +38,7 @@ export default connect(
   return (
     <div>
       <Box sx={{ display: "flex" }}>
-        <NavBar />
-        <SideBar />
-        <CssBaseline />
+        <DrawerDashboard/>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Box padding={3}>
           <DrawerHeader />

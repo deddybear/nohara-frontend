@@ -1,22 +1,20 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 
-export const CardDashboard = () => (
+export const CardDashboard = (props) => (
   <Card sx={{ minWidth: 275 }}>
     <CardContent>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Word of the Day
+        {props.headingCard}
       </Typography>
       <Typography variant="h5" component="div">
-        lorem
+        {props.count}
       </Typography>
       <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        adjective
+        Status : Aktif
       </Typography>
       <Typography variant="body2">
-        well meaning and kindly.
-        <br />
-        {'"a benevolent smile"'}
+        {props.desc}
       </Typography>
     </CardContent>
   </Card>

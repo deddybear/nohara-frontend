@@ -11,8 +11,6 @@ import {
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import LogoutIcon from "@mui/icons-material/Logout";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 
 //TODO : component dibuat untuk dashboard
 
-export const SideBar = (props) => {
+export const SideBar = () => {
   const theme = useTheme();
   const drawerWidth = useSelector((state) => state.drawerWidth);
   const open = useSelector((state) => state.open);
