@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import WebRoutes from './routes/web';
+import {WebRoutes} from './routes/web';
 import {createStore}  from 'redux';
 import { Provider } from 'react-redux';
 import { rootReducer } from './redux/rootReducer';

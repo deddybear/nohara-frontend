@@ -8,7 +8,7 @@ import { AppBar } from './navbar.styles';
 import { useDispatch, useSelector } from 'react-redux';
 
 //TODO : component dibuat untuk dashboard
-export const NavBar = (props) => {
+export const NavBar = () => {
     const open = useSelector((state) => state.open)
     const theme = useTheme()
     const drawerWidth = useSelector((state) => state.drawerWidth)

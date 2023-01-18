@@ -19,11 +19,12 @@ const getUserData = () =>
   new Promise((resolve) =>
     setTimeout(() => {
       const user = window.localStorage.getItem("user");
+      console.log(user);
       resolve(user);
     })
   );
 
-const WebRoutes = createBrowserRouter(
+export const WebRoutes = createBrowserRouter(
   createRoutesFromElements(
     <Route
       element={<AuthLayout />}
@@ -34,12 +35,10 @@ const WebRoutes = createBrowserRouter(
       <Route path="/dashboard" element={<Auth />}>
         <Route path="" element={<Dashboard />} />
         <Route path="caraousel" element={<Caraousel />} />
-        <Route path='layanan' element={<Layanan />} />
-        <Route path='protofolio' element={<Protofolio />} />
-        <Route path='about' element={<About />}/>
+        <Route path="layanan" element={<Layanan />} />
+        <Route path="protofolio" element={<Protofolio />} />
+        <Route path="about" element={<About />} />
       </Route>
     </Route>
   )
 );
-
-export default WebRoutes;
