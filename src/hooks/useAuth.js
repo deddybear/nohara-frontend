@@ -3,38 +3,40 @@ import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "./useLocalStorage";
 import axios from "axios";
 import config from "../lib/axios.config";
-import Swal from "sweetalert2";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children, userData }) => {
   const [user, setUser] = useLocalStorage("user", userData);
-  const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_API_URL;
-
-
+  const navigate = useNavigate();
   const login = async (data) => {
+    try {
+      await axios
+        .post(`${BASE_URL}/users/login`, data, {
+          headers: config.headers_json,
+        })
+        .then((res) => {
+          // console.log(res.data.result);
+          //* get and set data user
+          setUser(res.data.result);
+          return user;
+        })
+        .catch((err) => {
+          if (err.response) {
+            throw new Error(err.response.data.message);
+          }
 
-    await axios
-      .post(`${BASE_URL}/users/login`, data, {
-        headers: config.headers_json,
-      })
-      .then((res) => {
-        //* get and set data user
-        setUser(res.data.data.user)
-      }).catch((res) => {
-        Swal.fire({
-            icon: "error",
-            title: 'Oops... ada Kesalahan Server',
-            text: `${res.data.message}`
-          });
-      });
-
-    navigate("/dashboard/", { replace: true });
+          throw new Error(err.message);
+        });
+    } catch (err) {
+      throw err;
+    }
   };
 
   const logout = () => {
     setUser(null);
+    // redirect("/login");
     navigate("/", { replace: true });
   };
 

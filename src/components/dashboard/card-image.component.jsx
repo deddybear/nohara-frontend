@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Grid, IconButton } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-export default function CardImage({ link, namePost }) {
+export default function CardImage({ link, namePost, functionDelete }) {
   return (
     <Card sx={{ maxWidth: 390, boxShadow: 2 }}>
       <CardMedia component="img" alt={link} height="240" image={link} />
@@ -18,7 +18,7 @@ export default function CardImage({ link, namePost }) {
       </CardContent>
       <CardActions>
         <Grid container justifyContent="flex-end">
-          <IconButton aria-label="delete" size="large" color="error" onClick={() => alert('deleted')}>
+          <IconButton aria-label="delete" size="large" color="error" onClick={functionDelete}>
             <DeleteForeverIcon fontSize="inherit" />
           </IconButton>
         </Grid>

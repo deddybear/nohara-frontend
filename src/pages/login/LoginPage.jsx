@@ -7,13 +7,14 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { blue, red } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 import Swal from "sweetalert2";
-import {Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export const LoginPage = () => {
   const { login } = useAuth();
-
+  const navigate = useNavigate();
   const [statusLogged, setStatusLogged] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -23,11 +24,10 @@ export const LoginPage = () => {
     //* if data user is not null status logged is true
     if (dataUser) {
       setStatusLogged(true);
-
     }
-  },[]);
+  }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     if (!loading) {
       setLoading(true);
       event.preventDefault();
@@ -45,17 +45,33 @@ export const LoginPage = () => {
         return;
       }
 
-      login({
+      await login({
         username: data.get("username"),
         password: data.get("password"),
-      });
+      })
+        .then((result) => {
+          setStatusLogged(true);
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops... ada Kesalahan Server",
+            text: err,
+          });
+        });
+
+      setLoading(false);
+
+      if (statusLogged) {
+        return navigate("/dashboard/", { replace: true });
+      }
     }
   };
 
   return (
     <div>
       {statusLogged ? (
-        <Navigate to='/dashboard/'/>
+        <Navigate to="/dashboard/" />
       ) : (
         <Container component="main" maxWidth="xs">
           <Box
