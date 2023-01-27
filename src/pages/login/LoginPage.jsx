@@ -19,7 +19,7 @@ export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const dataUser = JSON.parse(localStorage.getItem("user"));
+    const dataUser = localStorage.getItem("user");
 
     //* if data user is not null status logged is true
     if (dataUser) {
