@@ -1,5 +1,4 @@
 import { Navigate, useOutlet } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
 import { Box } from "@mui/material";
 import { connect } from "react-redux";
 import { DrawerHeader } from "../components/sidebar/sidebar.styles";

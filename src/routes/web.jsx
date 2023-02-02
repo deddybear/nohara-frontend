@@ -18,7 +18,7 @@ import { About } from "../pages/dashboard/AboutPage";
 const getUserData = () =>
   new Promise((resolve) =>
     setTimeout(() => {
-      const user = window.localStorage.getItem("user");
+      const user = localStorage.getItem("user");
       console.log(user);
       resolve(user);
     })
