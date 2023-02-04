@@ -11,7 +11,7 @@ import {
 import { FaTiktok } from "react-icons/fa";
 import { Link } from "@mui/material";
 
-const AboutComponent = ({ aboutCompany, aboutContact }) => (
+const AboutComponent = ({ aboutCompany }) => (
   <Row>
     <Col xs={12} md={4} className="my-5">
       <p className="letter-spacing-1">
@@ -27,7 +27,7 @@ const AboutComponent = ({ aboutCompany, aboutContact }) => (
         <Col xs={1}>
           <IoHome />
         </Col>
-        <Col xs={11}>{aboutContact.address}</Col>
+        <Col xs={11}>{aboutCompany.address}</Col>
       </Row>
       <p className="mt-5 letter-spacing-1">
         <b>Kontak</b>
@@ -36,19 +36,19 @@ const AboutComponent = ({ aboutCompany, aboutContact }) => (
         <Col xs={1}>
           <AiFillPhone />
         </Col>
-        <Col xs={11}>{aboutContact.telephone}</Col>
+        <Col xs={11}>{aboutCompany.telephone}</Col>
       </Row>
       <Row>
         <Col xs={1}>
           <AiOutlineWhatsApp />
         </Col>
-        <Col xs={11}>{aboutContact.whatsapp}</Col>
+        <Col xs={11}>{aboutCompany.whatsapp}</Col>
       </Row>
       <Row>
         <Col xs={1}>
           <AiTwotoneMail />
         </Col>
-        <Col xs={11}>{aboutContact.email}</Col>
+        <Col xs={11}>{aboutCompany.email}</Col>
       </Row>
     </Col>
     <Col xs={12} md={4} className="my-5">

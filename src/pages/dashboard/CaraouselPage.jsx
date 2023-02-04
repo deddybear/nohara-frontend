@@ -119,7 +119,7 @@ export const Caraousel = () => {
 
       data.append("photo", photoCaraousel);
       data.append("name", nameCaraousel);
-
+      
       await axios
         .post(`${URL_BASE}/caraousel/create`, data, {
           headers: headers,
