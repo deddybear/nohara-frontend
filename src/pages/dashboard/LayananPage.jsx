@@ -7,7 +7,6 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
-  Input,
   InputAdornment,
   MenuItem,
   Select,
@@ -22,16 +21,14 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { ModalComponent } from "../../components/modal/modal.components";
 import InputLabel from "@mui/material/InputLabel";
-
-//! Kurang multiple iamge upload 
-//! karena satu post layanan bisa mempunyai banyak foto
+import { DropZoneComponent } from "../../components/dropzone-upload/dropzone-upload.component";
 
 export const Layanan = () => {
   const URL_BASE = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [nameCaraousel, setNameCaraousel] = useState();
-  const [photoCaraousel, setPhotoCaraousel] = useState();
+  const [nameLayanan, setNameLayanan] = useState();
+  const [photoLayanan, setPhotoLayanan] = useState([]);
   const [data, setData] = useState([]);
   const [open, setOpen] = React.useState(false);
   const [dataCount, setDataCount] = useState(0);
@@ -45,8 +42,7 @@ export const Layanan = () => {
     offset: 0,
   });
 
-  const handleChangeFiles = (e) => setPhotoCaraousel(e.target.files[0]);
-  const handleChangeName = (e) => setNameCaraousel(e.target.value);
+  const handleChangeName = (e) => setNameLayanan(e.target.value);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -106,6 +102,7 @@ export const Layanan = () => {
     if (loading) {
       return;
     }
+    
     setLoading(true);
     try {
       const headers = {
@@ -114,8 +111,10 @@ export const Layanan = () => {
       };
       const data = new FormData();
 
-      data.append("photo", photoCaraousel);
-      data.append("name", nameCaraousel);
+      data.append("name", nameLayanan);
+      photoLayanan.forEach((val, inx) => {
+          data.append(`photo`, photoLayanan[inx]);
+      })
 
       await axios
         .post(`${URL_BASE}/pelayanan/create`, data, {
@@ -140,9 +139,11 @@ export const Layanan = () => {
       Swal.fire("Peringatan !", err, "error");
     }
 
+    setPhotoLayanan([]);
     setLoading(false);
   };
 
+  //* fetch data at frist page
   useEffect(() => {
     const fetchDataCaraousel = async () => {
       const url = `${URL_BASE}/pelayanan/list?offset=${controller.offset}&limit=${controller.rowsPerPage}`;
@@ -151,7 +152,7 @@ export const Layanan = () => {
         await axios
           .get(url)
           .then((res) => {
-            // console.log(res.data.result.data);
+            console.log(res.data.result.data);
             setDataCount(res.data.result.total);
             setData(res.data.result.data);
           })
@@ -198,6 +199,40 @@ export const Layanan = () => {
     });
   };
 
+  const handleAcceptedFiles = (files) => {
+    //* check jika photo sudah melebihi 3
+    if (files.length + photoLayanan.length > 3) {
+      Swal.fire("Upload Files", "Maximum Files is 3", "error");
+      setPhotoLayanan([]);
+      return 0;
+    }
+
+    //* check jika user memilih lebih dari 1 foto
+    if (files.length > 1) {
+      files.forEach((element) => {
+        const newValue = Object.assign(element, {
+          preview: URL.createObjectURL(element),
+        });
+
+        setPhotoLayanan((oldArray) => [...oldArray, newValue]);
+      });
+      // console.log('banyak');
+    } else {
+      //* jika user memilih foto hanya 1
+      const newValue = Object.assign(files[0], {
+        preview: URL.createObjectURL(files[0]),
+      });
+      // console.log('disini hanya satu');
+      setPhotoLayanan((oldArray) => [...oldArray, newValue]);
+    }
+  };
+
+  const handleFilesRejected = (e) => {
+    const listMessage = e[0].errors[0];
+    Swal.fire("Upload Files", listMessage.message, "error");
+    setPhotoLayanan([]);
+  };
+
   return (
     <div>
       {loading ? (
@@ -222,12 +257,13 @@ export const Layanan = () => {
             columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 3 }}
           >
             {data.length > 0 ? (
-              data.map((item) => (
-                <Grid xs={12} sm={6} md={6} lg={3} item={true} key={item.id}>
+              data.map((item, inx) => (
+                <Grid xs={12} sm={6} md={6} lg={3} item={true} key={`${item.id}-${inx}`}>
                   <CardImage
-                    link={`${process.env.REACT_APP_SERVER_URL}${item.path}`}
                     namePost={item.name}
                     functionDelete={() => handleDel(item.id)}
+                    caraousel={true}
+                    dataCarousel={item.photos}
                   />
                 </Grid>
               ))
@@ -307,15 +343,11 @@ export const Layanan = () => {
             </Box>
             <Box component={"div"} marginTop={2}>
               <p style={{ margin: 0 }}>File Photo Layanan</p>
-              <FormControl sx={{ mt: 2 }}>
-                <Input
-                  required
-                  type={"file"}
-                  id="standard-file-layanan"
-                  name="file_layanan"
-                  label="File Photos"
-                  onChange={handleChangeFiles}
-                  inputProps={{ accept: "image/*" }}
+              <FormControl sx={{ mt: 2, width: 1 }}>
+                <DropZoneComponent
+                  dataFiles={photoLayanan}
+                  handleFilesRejected={handleFilesRejected}
+                  handleAcceptedFiles={handleAcceptedFiles}
                 />
               </FormControl>
             </Box>

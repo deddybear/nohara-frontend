@@ -6,11 +6,34 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Grid, IconButton } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { Carousel } from "react-bootstrap";
 
-export default function CardImage({ link, namePost, functionDelete }) {
+export default function CardImage({
+  link,
+  namePost,
+  functionDelete,
+  caraousel,
+  dataCarousel,
+}) {
   return (
     <Card sx={{ maxWidth: 390, boxShadow: 2 }}>
-      <CardMedia component="img" alt={link} height="240" image={link} />
+      {caraousel ? (
+        <Carousel>
+          {dataCarousel.map((item, index) => (
+            <Carousel.Item key={index}>
+              <CardMedia
+                component="img"
+                height="240"
+                image={`${process.env.REACT_APP_SERVER_URL}${item.path}`}
+                alt={`img_service_${index}`}
+              ></CardMedia>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      ) : (
+        <CardMedia component="img" alt={link} height="240" image={link} />
+      )}
+
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {namePost}
@@ -18,7 +41,12 @@ export default function CardImage({ link, namePost, functionDelete }) {
       </CardContent>
       <CardActions>
         <Grid container justifyContent="flex-end">
-          <IconButton aria-label="delete" size="large" color="error" onClick={functionDelete}>
+          <IconButton
+            aria-label="delete"
+            size="large"
+            color="error"
+            onClick={functionDelete}
+          >
             <DeleteForeverIcon fontSize="inherit" />
           </IconButton>
         </Grid>
