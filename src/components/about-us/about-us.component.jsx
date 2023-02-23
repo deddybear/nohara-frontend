@@ -58,7 +58,7 @@ const AboutComponent = ({ aboutCompany }) => (
       <div className="my-3">
         <a
           className="text-dark"
-          href="https://web.facebook.com/people/Jasa-Desain-Rumah/100088195363945/"
+          href={aboutCompany.facebook}
         >
           <Row>
             <Col xs={1}>
@@ -69,7 +69,7 @@ const AboutComponent = ({ aboutCompany }) => (
         </a>
       </div>
       <div className="my-3">
-        <Link className="text-dark" href="#">
+        <Link className="text-dark" href={ aboutCompany.instagarm }>
           <Row>
             <Col xs={1}>
               <AiFillInstagram />
@@ -79,7 +79,7 @@ const AboutComponent = ({ aboutCompany }) => (
         </Link>
       </div>
       <div className="my-3">
-        <Link className="text-dark" href="#">
+        <Link className="text-dark" href={ aboutCompany.tiktok }>
         <Row>
             <Col xs={1}>
               <FaTiktok />

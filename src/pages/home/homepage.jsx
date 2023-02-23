@@ -55,6 +55,7 @@ export const HomePage = () => {
       if (res.data.result === "undefined") {
         return setDataCompany(AboutData);
       }
+      console.log(res.data.result);
       setDataCompany(res.data.result);
     });
   }, []);

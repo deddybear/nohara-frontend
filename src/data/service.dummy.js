@@ -1,4 +1,4 @@
-const path = 'https://via.placeholder.com/1000';
+const path = '/static/media/TEST11-46d2cb3c95f86fee9a86.jpg';
 
 const Service = [
     {
