@@ -8,7 +8,6 @@ const CarouselComponent = ({listData}) => (
         {
             listData.map((item, index) => <Carousel.Item className='h-10' key={index}>
                 <img
-                    height={550}
                     className='w-100 col-6'
                     src={`${process.env.REACT_APP_SERVER_URL}${item.path}`}
                     alt={`img_${index}`}
